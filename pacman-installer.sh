@@ -34,7 +34,7 @@ installVirtualBox() {
         echo "The script is now installing VirtualBox"
         echo "The script is now installing VirtualBox"
         sudo pacman -S virtualbox virtualbox-guest-iso --noconfirm
-        sudo gpasswd -a $USERS vboxusers
+        sudo gpasswd -a $USER vboxusers
         sudo modprobe vboxdrv
         yay -Syy
         yay -S virtualbox-ext-oracle
