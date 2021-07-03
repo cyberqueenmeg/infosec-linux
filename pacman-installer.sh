@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-#function to echo a line between segments
-line() {
-    echo "----------------------------------"
-}
-
 #function to install the layer 2 hypervisor, VirtualBox
 installVirtualBox() {
     echo "First we will check for necessary dependencies."
@@ -13,7 +8,7 @@ installVirtualBox() {
     YayCheck=$(whereis yay)
     if [ $YayCheck == *"/usr/bin"* ]; then
         echo "Yay is installed - continuing on"
-        $(line)
+        echo "----------------------------------"
     else
         echo "Yay is not installed. Please enter your username so that we can automate the Yay installation."
         read username
@@ -40,7 +35,7 @@ installVirtualBox() {
         yay -S virtualbox-ext-oracle
         sudo systemctl enable vboxweb.service
         sudo systemctl start vboxweb.service
-        $(line)
+        echo "----------------------------------"
         echo "We will now begin installing the InfoSec Linux templates that you want."
         ./template-installer.sh
 }
