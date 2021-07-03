@@ -7,6 +7,7 @@ VBoxCheck=$(whereis virtualbox)
 
 if [ $VBoxCheck == *"/usr/bin"* ]; then
     echo "VirtualBox is installed!"
+    echo "----------------------------------"
     echo "We will now begin installing the InfoSec Linux templates that you want."
     ./template-installer.sh
 else
