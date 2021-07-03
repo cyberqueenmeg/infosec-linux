@@ -22,4 +22,5 @@ installVirtualBox() {
 }
 
 echo "Welcome to the InfoSec Linux RPM installer."
+echo "----------------------------------"
 $(installVirtualBox)
