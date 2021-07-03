@@ -12,7 +12,7 @@ In your terminal (normal user or root permissions), navigate to the directory yo
 ```
 git clone https://github.com/mhowell11/infosec-linux.git
 
-chmod ax infosec-linux
+chmod 777 infosec-linux
 
 cd infosec-linux
 
