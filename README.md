@@ -7,12 +7,17 @@ InfoSec Linux is a custom Linux distro inspired by Qubes OS but with a layer 2 h
 
 ## Installation Instructions
 
+
+### Package Prerequisites
+- Git 
+
+
 In your terminal (normal user or root permissions), navigate to the directory you want to install InfoSec Linux in, then execute the following:
 
 ```
 git clone https://github.com/mhowell11/infosec-linux.git
 
-chmod 777 infosec-linux
+chmod 777 infosec-linux/*
 
 cd infosec-linux
 
