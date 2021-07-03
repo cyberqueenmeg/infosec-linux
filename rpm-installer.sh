@@ -10,7 +10,7 @@ installVirtualBox() {
     #Check for VBox
     VBoxCheck=$(whereis virtualbox)
 
-    if [[ $VBoxCheck == *"/usr/bin"* ]]; then
+    if [ $VBoxCheck == *"/usr/bin"* ]; then
         echo "VirtualBox is installed!"
         echo "We will now begin installing the InfoSec Linux templates that you want."
         ./template-installer.sh
