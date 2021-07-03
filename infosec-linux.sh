@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-#function to echo a line between segments
-line() {
-    echo "----------------------------------"
-}
-
 #function to determine package manager to install InfoSec Linux with
 packageManager() {
     echo "Before we start, the installer needs to know what package manager you use."
@@ -32,9 +27,8 @@ packageManager() {
         $(packageManager)
     fi
 }
-
-$(line)
+echo "----------------------------------"
 echo "Welcome to the InfoSec Linux installer!"
 echo "Please note that some software is proprietary. All software is legally acquired from official sources."
-$(line)
+echo "----------------------------------"
 $(packageManager)
