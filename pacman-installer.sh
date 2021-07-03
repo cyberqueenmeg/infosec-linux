@@ -41,4 +41,5 @@ installVirtualBox() {
 }
 
 echo "Welcome to the InfoSec Linux Pacman installer."
+echo "----------------------------------"
 $(installVirtualBox)
