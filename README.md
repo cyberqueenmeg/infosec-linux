@@ -16,5 +16,5 @@ chmod ax infosec-linux
 
 cd infosec-linux
 
-./infosec-linux
+./infosec-linux.sh
 ```
