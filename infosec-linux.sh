@@ -27,7 +27,7 @@ packageManager() {
         echo "You can contribute support for your package manager to InfoSec Linux by creating a pull request at https://github.com/mhowell11/infosec-linux"
         echo "You may also run InfoSec Linux by installing a Linux distro using APT, RPM, or Pacman into a virtual machine, although performance may be downgraded."    
         echo "Sorry for the inconvenience and thank you for taking the time to explore InfoSec Linux. We hope you choose to contribute to the project by adding your package manager."
-    else; then
+    else 
         echo "You entered an invalid input. Please enter 1 if you use APT (Debian/Ubuntu and its derivatives), 2 if you use RPM (includes YUM and DNF, runs on RedHat/Fedora systems and their derivatives), 3 if you use Pacman (Arch Linux and its derivatives), and 4 if you use another package manager or a non-Linux system (includes macOS, Windows, and other Operating System types that don't use these package managers.)"
         $(packageManager)
     fi
