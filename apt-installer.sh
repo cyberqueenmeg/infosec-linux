@@ -12,14 +12,17 @@ read virtualboxInstalled
 $(line)
 if [[$virtualboxInstalled -eq 1]]; then
     echo "We will now begin installing the InfoSec Linux templates that you want."
+    ./template-installer.sh
 elif [[$virtualboxInstalled -eq 2]]; then
     echo "The script is now installing VirtualBox"
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
     wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
     sudo apt-get update
     sudo apt-get install virtualbox-6.1
+    sudo apt install virtualbox-ext-pack
     $(line)
     echo "We will now begin installing the InfoSec Linux templates that you want."
+    ./template-installer.sh
 else
     echo "You did not enter a valid input. Please enter 1 if you already have VirtualBox installed and 2 if you do not already have VirtualBox installed."
     $(installVirtualBox)
