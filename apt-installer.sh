@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #function to install the layer 2 hypervisor, VirtualBox
-installVirtualBox() {
+installVirtualBox () {
 #Check for VBox
 VBoxCheck=$(whereis virtualbox)
 
