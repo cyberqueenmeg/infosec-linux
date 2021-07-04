@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #function to determine package manager to install InfoSec Linux with
-packageManager() {
+packageManager () {
     echo "Before we start, the installer needs to know what package manager you use."
     echo "Please enter 1 if you use APT (Debian/Ubuntu and its derivatives), 2 if you use RPM (includes YUM and DNF, runs on RedHat/Fedora systems and their derivatives), 3 if you use Pacman (Arch Linux and its derivatives), and 4 if you use another package manager or a non-Linux system (includes macOS, Windows, and other Operating System types that don't use these package managers.)"
     read packageManager
