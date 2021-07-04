@@ -6,7 +6,7 @@ installVirtualBox() {
     #Check for VBox
     VBoxCheck=$(whereis virtualbox)
     YayCheck=$(whereis yay)
-    if [ $YayCheck == *"/usr/bin"* ]; then
+    if [ $YayCheck = *"/usr/bin"* ]; then
         echo "Yay is installed - continuing on"
         echo "----------------------------------"
     else
@@ -20,7 +20,7 @@ installVirtualBox() {
         cd yay
         makepkg -si
 
-    if [ $VBoxCheck == *"/usr/bin"* ]; then
+    if [ $VBoxCheck = *"/usr/bin"* ]; then
         echo "VirtualBox is installed!"
         echo "We will now begin installing the InfoSec Linux templates that you want."
         ./template-installer.sh
