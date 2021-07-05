@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-#function to install the layer 2 hypervisor, VirtualBox
-installVirtualBox () {
+echo "Welcome to the InfoSec Linux APT installer."
+echo "----------------------------------"
+
+#install the layer 2 hypervisor, VirtualBox
+
 #Check for VBox
 VBoxCheck=$(whereis virtualbox)
 
@@ -22,9 +25,3 @@ else
     echo "We will now begin installing the InfoSec Linux templates that you want."
     ./template-installer.sh
 fi
-
-
-echo "Welcome to the InfoSec Linux APT installer."
-echo "----------------------------------"
-$(installVirtualBox)
-
