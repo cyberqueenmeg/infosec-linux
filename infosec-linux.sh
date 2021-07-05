@@ -5,9 +5,22 @@ echo "----------------------------------"
 echo "Welcome to the InfoSec Linux installer!"
 echo "Please note that some software is proprietary. All software is legally acquired from official sources."
 echo "----------------------------------"
-echo "Before we start, the installer needs to know what package manager you use."
-echo "Please enter 1 if you use APT (Debian/Ubuntu and its derivatives), 2 if you use RPM (includes YUM and DNF, runs on RedHat/Fedora systems and their derivatives), 3 if you use Pacman (Arch Linux and its derivatives), and 4 if you use another package manager or a non-Linux system (includes macOS, Windows, and other Operating System types that don't use these package managers.)"
-read packageManager
+echo "Before we start the installation, the script needs to detect what package manager you are using and if the package manager is supported by InfoSec Linux."
+
+declare -A osInfo;
+osInfo[/etc/redhat-release]=yum
+osInfo[/etc/arch-release]=pacman
+#osInfo[/etc/gentoo-release]=emerge - hoping to add support for Gentoo later
+#osInfo[/etc/SuSE-release]=zypp - hoping to add SuSE support later
+osInfo[/etc/debian_version]=apt
+
+for f in ${!osInfo[@]}
+do
+    if [[ -f $f ]];then
+        packageManager=${osInfo[$f]}
+    fi
+done
+
 
 if [[ $packageManger == 1 ]]; then
     echo "Starting APT installation script"
