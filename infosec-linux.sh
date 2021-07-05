@@ -22,7 +22,7 @@ do
 done
 
 
-if [[ $packageManger == 'apt']]; then
+if [[ $packageManger == 'apt' ]]; then
     echo "Starting APT installation script"
     echo "----------------------------------"
     ./apt-installer.sh
