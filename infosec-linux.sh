@@ -15,9 +15,9 @@ if [ -x "$(command -v apt-get)" ]; then
     ./apt-installer.sh
 elif [ -x "$(command -v dnf)" ]; then
     echo "DNF Package Manager Detected"
-    echo "Starting RPM installation script"
+    echo "Starting Fedora installation script"
     echo "----------------------------------"
-    ./rpm-installer.sh
+    ./fedora-installer.sh
 elif [ -x "$(command -v pacman)" ]; then
     echo "Pacman Package Manager Detected"
     echo "Starting Pacman installation script"
