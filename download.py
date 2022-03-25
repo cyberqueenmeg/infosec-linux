@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 # Heavily based on https://github.com/jcnaud/python-linux-iso/blob/master/linuxiso/download.py with edits for InfoSec Linux. Thanks to @jcnaud for providing this under the BSD-2 License, listed below!
+# This file is a Python class that allows the download of ISO files for the InfoSec Linux virtual machine automation.
 
 '''
 Updated Notice to reflect Creator and Year:
@@ -30,8 +31,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import os
 import sys
-import requests_mock
-import pytest
 
 class Download(object):
     """
@@ -46,7 +45,6 @@ class Download(object):
        **remove** or **remove_all**
     >>> download = Download(conf)
     >>> download.list()
-    >>> download.status("debian-9.6.0-strech-amd64-netinst.iso")
     >>> download.download("debian-9.6.0-strech-amd64-netinst.iso")
     """
 
@@ -54,75 +52,12 @@ class Download(object):
         self.conf = conf
 
     def list(self):
-        """Get list of iso managed.
-        :return: List of iso managed
-        :rtype: list
-        >>> download.list()
+      download.list()
         [
-            "Parrot-security-5.0_amd64.iso",
-            "https://cdimage.kali.org/kali-2022.1/kali-linux-2022.1-installer-amd64.iso"
+            "https://cdimage.kali.org/kali-2022.1/kali-linux-2022.1-installer-amd64.iso",
+            
         ]
-        """
         return sorted(list(self.conf['download'].keys()))
-
-    def status(self, iso):
-        """Get one iso status.
-        :param str iso: Name of iso used
-        :return: Status of the iso
-        :rtype: dict
-        Test :
-         - if the url to download the iso exist
-         - if the iso already downloaded
-         - if the checksum is good (if the iso is download)
-        >>> download.status("debian-9.6.0-strech-amd64-netinst.iso")
-        {
-            "is_downloaded": true,
-            "is_hash_valid": true,
-            "is_url_exist": true
-        }
-        """
-        iso_params = self.conf['download'][iso]
-        url = iso_params['url_iso']
-        result = {}
-        result['is_url_exist'] = self._check_url(url)
-
-        file = os.path.join(self.conf['general']['dir_input'], iso)
-        if os.path.isfile(file):
-            result['is_downloaded'] = True
-
-            if 'hash' in iso_params.keys():
-                iso_hash = iso_params['hash']
-                if iso_hash['type'] in hashlib.algorithms_available:
-                    hasher = getattr(hashlib, iso_hash['type'])()
-                    BLOCKSIZE = 65536
-                    with open(file, 'rb') as afile:
-                        buf = afile.read(BLOCKSIZE)
-                        while len(buf) > 0:
-                            hasher.update(buf)
-                            buf = afile.read(BLOCKSIZE)
-                    if iso_hash['sum'] == hasher.hexdigest():
-                        result['is_hash_valid'] = True
-                    else:
-                        result['is_hash_valid'] = False
-        else:
-            result['is_downloaded'] = False
-
-        return result
-
-    def status_all(self):
-        """Get all iso status.
-        :return: status of all iso managed
-        :rtype: dict
-        Test if the url to download exist, if the iso already downloaded
-        and if the checksum is good
-        >>> download.status_all()
-        """
-
-        l_iso = self.conf['download']
-        result = {}
-        for iso in l_iso.keys():
-            result[iso] = self.status(iso)
-        return result
 
     def _check_url(self, url):
         """ Check if url exist
@@ -141,7 +76,7 @@ class Download(object):
     def download(self, iso):
         """Download one iso
         :param str iso: Name of iso used
-        >>> download.download("debian-9.6.0-strech-amd64-netinst.iso")
+        >>> download.download("iso_name.iso")
         """
         url_iso = self.conf['download'][iso]['url_iso']
         dir_input = self.conf['general']['dir_input']
