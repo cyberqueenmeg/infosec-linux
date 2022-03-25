@@ -1,14 +1,16 @@
 ## Contributors to InfoSec Linux
 
 ## Founder of InfoSec Linux and Primary Developer
-Megan H (cyberqueen-meg)
+Megan Howell (@cyberqueen-meg)
 
 ## First Beta Testers of the VirtualBox Installation Script
-Megan H (cyberqueen-meg)
+Megan Howell (@cyberqueen-meg)
 
-Alex G (wailord284)
+Alex Gaudino (@wailord284)
 
 ## Contributors to the code of InfoSec Linux
-Megan H (cyberqueen-meg) - primary developer
+Megan Howell (@cyberqueen-meg) - primary developer
 
-Alex G (wailord284) - pacman automation cleanup
+Alex Gaudino (@wailord284) - pacman automation cleanup
+
+Jean-Charles Naud (@jcnaud) - base code/inspiration for the ISO download script
