@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Automated Arch Linux installation script originally by Alex "wailord284" Gaudino.
+#Automated Arch Linux installation script originally by Alex "wailord284" Gaudino, modified by Megan Howell for InfoSec Linux.
 ###ABOUT###
 #This script will autodetect a large range of hardware and should automatically configure many systems out of the box. It will install InfoSec Linux with the repo.
 
