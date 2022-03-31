@@ -62,7 +62,7 @@ dialog --title "Welcome!" \
 --backtitle "$dialogBacktitle" \
 --timeout 20 \
 --ok-label "Begin" \
---msgbox "$(printf %"s\n\n" "Welcome to Alex's Automatic Arch Linux install script!" "Please note, no changes will be made to the system until the final confirmation prompt at the end." "Press control + C to cancel at any time and return to the archiso.")" \
+--msgbox "$(printf %"s\n\n" "Welcome to the InfoSec Linux Installer!" "Please note, no changes will be made to the system until the final confirmation prompt at the end." "Press control + C to cancel at any time and return to the archiso.")" \
 "$dialogHeight" "$dialogWidth"
 clear
 
@@ -580,11 +580,6 @@ EOF
 echo "keyserver keyserver.ubuntu.com" >> /mnt/etc/pacman.d/gnupg/gpg.conf
 echo "keyserver hkp://pgp.mit.edu:11371" >> /mnt/etc/pacman.d/gnupg/gpg.conf
 
-#Reinstall keyring in case of gpg errors and add archlinuxcn/chaotic keyrings
-dialog --scrollbar --timeout 1 --backtitle "$dialogBacktitle" \
---title "Installing keys" \
---prgbox "Installing Archlinuxcn keyring" "arch-chroot /mnt pacman -Syy" "$HEIGHT" "$WIDTH"
-clear
 
 ### FINISH INSPECTING CODE HERE TOMORROW ###
 
@@ -592,10 +587,50 @@ clear
 #Install desktop and software
 dialog --scrollbar --timeout 1 --backtitle "$dialogBacktitle" \
 --title "Installing essential window manager software" \
---prgbox "Installing desktop environment" "arch-chroot /mnt pacman -Syy && arch-chroot /mnt pacman -S --needed wget lxdm xorg xorg-server" "$HEIGHT" "$WIDTH"
+--prgbox "Installing desktop environment" "arch-chroot /mnt pacman -Syy && arch-chroot /mnt pacman -S --needed wget lxdm xorg xorg-server && arch-chroot /mnt systemctl enable lxdm.service" "$HEIGHT" "$WIDTH"
 clear
 
 #########DESKTOP PICKING################
+declare -a selection
+echo "$green""1$reset - Install KDE desktop"
+echo "$green""2$reset - Install XFCE desktop"
+echo "$green""3$reset - Install GNOME desktop"
+echo "$green""4$reset - Install Cinnamon desktop"
+echo "$green""5$reset - Install Budgie desktop"
+echo "$green""6$reset - Install MATE desktop"
+
+echo "$reset""Default option is:$green 1$""$reset"
+echo "Enter$green 1-12$reset (seperated by spaces for multiple options including (q)uit) or$red q$reset to$red quit$reset"
+read -r -p "Options: " selection
+selection=${selection:- 1}
+	for entry in $selection ;do
+
+	case "${entry[@]}" in
+
+		1)
+		arch-chroot /mnt pacman -S plasma kde-applications --noconfirm 
+		;;
+		
+		2)
+		arch-chroot /mnt pacman -S xfce4 xfce4-goodies --noconfirm 
+		;;
+		
+		3)
+		arch-chroot /mnt pacman -S gnome --noconfirm
+		arch-chroot /mnt systemctl enable gdm.service
+		;;
+		
+		4)
+		arch-chroot /mnt pacman -S cinnamon xterm --noconfirm 
+		;;
+		
+		5)
+		arch-chroot /mnt pacman -S budgie-desktop xterm --noconfirm 
+		;;
+		
+		6)
+		arch-chroot /mnt pacman -S mate mate-extra ttf-freefont --noconfirm 
+		;;
 
 ###CORE SYSTEM SERVICES###
 #Enable services
@@ -933,13 +968,6 @@ clear
 echo 'tcp_bbr' > /mnt/etc/modules-load.d/tcp_bbr.conf
 
 
-###LXDM - DISPLAY MANAGER###
-#Set LXDM theme and session
-sed "s,\#\ session=/usr/bin/startlxde,\ session=/usr/bin/startxfce4,g" -i /mnt/etc/lxdm/lxdm.conf
-sed "s,theme=Industrial,theme=Archlinux,g" -i /mnt/etc/lxdm/lxdm.conf
-sed "s,gtk_theme=Adwaita,gtk_theme=Arc-Dark,g" -i /mnt/etc/lxdm/lxdm.conf
-
-
 ###SYSTEMD###
 #Systemd services
 #https://wiki.archlinux.org/index.php/Network_configuration#Promiscuous_mode - packet sniffing/monitoring
@@ -1054,182 +1082,21 @@ clear
 
 
 ###POST INSTALL###
-#Optional post install settings
-declare -a selection
-echo "$green""Installation complete! Here are some optional things you may want to install:""$reset"
-echo "$green""1$reset - Install Bedrock Linux"
-echo "$green""2$reset - Enable X2Go remote management server"
-echo "$green""3$reset - Enable sshd"
-echo "$green""4$reset - Route all traffic over Tor"
-echo "$green""5$reset - Sort mirrors with Reflector for new install $green(recommended)"
-echo "$green""6$reset - Enable and install the UFW firewall"
-echo "$green""7$reset - Use the iwd wifi backend over wpa_suplicant for NetworkManager"
-echo "$green""8$reset - Disable/blacklist bluetooth and webcam"
-echo "$green""9$reset - Enable automatic desktop login in lxdm $green(recommended)"
-echo "$green""10$reset - Enable daily rootkit detection scan"
-echo "$green""11$reset - Block ads system wide using hblock to modify the hosts file $green(recommended)"
-echo "$green""12$reset - Encrypt and cache DNS requests - Enables DNSCrypt and DNSMasq"
 
-echo "$reset""Default options are:$green 5 9 11$red q""$reset"
-echo "Enter$green 1-12$reset (seperated by spaces for multiple options including (q)uit) or$red q$reset to$red quit$reset"
-read -r -p "Options: " selection
-selection=${selection:- 5 9 11 q}
-	for entry in $selection ;do
+#Unmount based on encryption
+if [ "$encrypt" = y ]; then
+	umount -R /mnt
+	umount -R /mnt/boot
+	cryptsetup close cryptroot
+fi
+if [ "$encrypt" = n ]; then
+	umount -R /mnt
+	umount -R /mnt/boot
+fi
+clear
+echo "$green""Installation Complete. Thanks for installing!""$reset"
+sleep 1s
+exit 0
+;;
 
-	case "${entry[@]}" in
-
-		1) #Bedrock Linux
-		#https://raw.githubusercontent.com/bedrocklinux/bedrocklinux-userland/0.7/releases
-		bedrockVersion="0.7.27"
-		echo "$green""Installing Bedrock Linux""$reset"
-		modprobe fuse
-		arch-chroot /mnt wget https://github.com/bedrocklinux/bedrocklinux-userland/releases/download/"$bedrockVersion"/bedrock-linux-"$bedrockVersion"-x86_64.sh
-		arch-chroot /mnt sh bedrock-linux-"$bedrockVersion"-x86_64.sh --hijack
-		arch-chroot /mnt sed "s,timeout = 30,timeout = 3,g" -i /bedrock/etc/bedrock.conf
-		sleep 3s
-		;;
-
-		2) #X2Go
-		echo "$green""Setting up X2Go server. Will also enable sshd.""$reset"
-		arch-chroot /mnt pacman -S x2goserver x2goclient --noconfirm
-		arch-chroot /mnt x2godbadmin --createdb
-		arch-chroot /mnt systemctl enable x2goserver
-		arch-chroot /mnt systemctl enable sshd
-		sleep 3s
-		;;
-
-		3) #SSHD
-		echo "$green""Enabling sshd""$reset" # AllowUsers, PermitRootLogin no
-		arch-chroot /mnt systemctl enable sshd
-		sleep 3s
-		;;
-
-		4) #Tor
-		echo "$green""Routing all traffic over Tor""$reset"
-		arch-chroot /mnt pacman -S tor torsocks --noconfirm
-		#Copy iptables rules
-		mv Arch-Linux-Installer-master/configs/tor/iptables.rules /mnt/etc/iptables/
-		ln -s /mnt/etc/iptables/iptables.rules /mnt/etc/iptables/ip6tables.rules
-		echo -e "nameserver ::1\nnameserver 127.0.0.1" > /mnt/etc/resolv.conf
-		chattr +i /mnt/etc/resolv.conf #lock resolv to prevent overwrites
-		echo -e "DNSPort 9053\nTransPort 9040\nSocksPort 9050" >> /mnt/etc/tor/torrc
-		mkdir -p /mnt/etc/systemd/system/tor.service.d/
-		mv Arch-Linux-Installer-master/configs/tor/netcap.conf /mnt/etc/systemd/system/tor.service.d/
-		arch-chroot /mnt systemctl enable tor
-		arch-chroot /mnt systemctl enable dnsmasq
-		#Delete stock dnsmasq config then copy custom one
-		rm /mnt/etc/dnsmasq.conf
-		mv Arch-Linux-Installer-master/configs/tor/dnsmasq.conf /mnt/etc/dnsmasq.conf
-		arch-chroot /mnt systemctl enable iptables.service
-		arch-chroot /mnt systemctl enable ip6tables.service
-		arch-chroot /mnt usermod -a -G tor "$user"
-		sleep 3s
-		;;
-
-		5) #Mirrors
-		echo "$green""Sorting mirrors""$reset"
-		arch-chroot /mnt pacman -S reflector --noconfirm
-		arch-chroot /mnt reflector -f 15 --verbose --latest 25 --country US --protocol https --age 12 --sort rate --save /etc/pacman.d/mirrorlist
-		sleep 3s
-		;;
-
-		6) #UFW
-		echo "$green""Installing and configuring the UFW firewall""$reset"
-		arch-chroot /mnt pacman -S ufw gufw --noconfirm
-		arch-chroot /mnt ufw default deny
-		arch-chroot /mnt ufw allow deluge
-		arch-chroot /mnt ufw limit SSH
-		arch-chroot /mnt ufw enable
-		arch-chroot /mnt systemctl enable ufw.service
-		sleep 3s
-		;;
-
-		7) #IWD
-		echo "$green""Configuring iwd as the default wifi backend in NetworkManager""$reset"
-		arch-chroot /mnt pacman -S iwd --noconfirm
-		mv Arch-Linux-Installer-master/configs/networkmanager/wifi_backend.conf /mnt/etc/NetworkManager/conf.d/
-		sleep 3s
-		;;
-
-		8) #Blacklist modules
-		echo "$green""Blacklisting bluetooth and webcam""$reset"
-		#bluetooth
-		arch-chroot /mnt systemctl enable rfkill-block@bluetooth
-		mv Arch-Linux-Installer-master/configs/modprobe/blacklist-bluetooth.conf /mnt/etc/modprobe.d/
-		#webcam
-		mv Arch-Linux-Installer-master/configs/modprobe/blacklist-webcam.conf /mnt/etc/modprobe.d/
-		sleep 3s
-		;;
-
-		9) #Desktop login - LXDM
-		echo "$green""Enabling automatic desktop login""$reset"
-		sed "s,\#\ autologin=dgod,\ autologin=$user,g" -i /mnt/etc/lxdm/lxdm.conf
-		sleep 3s
-		;;
-
-		10) #Rkhunter
-		#https://donatoroque.wordpress.com/2017/08/13/setting-up-rkhunter-using-systemd/
-		echo "$green""Creating and enabling daily rkhunter systemd service""$reset"
-		arch-chroot /mnt pacman -S rkhunter --noconfirm
-		mv Arch-Linux-Installer-master/configs/systemd/rkhunter.service /mnt/etc/systemd/system/
-		mv Arch-Linux-Installer-master/configs/systemd/rkhunter.timer /mnt/etc/systemd/system/
-		arch-chroot /mnt systemctl enable rkhunter.timer
-		sleep 3s
-		;;
-
-		11) #hblock
-		#run hblock to prevent ads
-		echo "$green""Running hblock and enabling hblock.timer - hosts file will be modified""$reset"
-		arch-chroot /mnt pacman -S hblock --noconfirm #installed from Aurmageddon
-		arch-chroot /mnt hblock
-		arch-chroot /mnt systemctl enable hblock.timer
-		#Make sure to replace the hostname from archiso
-		sed -i "s/archiso/$host/g" /mnt/etc/hosts
-		sleep 3s
-		;;
-
-		12) #Encrypt DNS - dnscrypt/dnsmasq
-		#https://wiki.archlinux.org/index.php/Dnsmasq
-		#https://wiki.archlinux.org/index.php/NetworkManager#/etc/resolv.conf
-		#https://wiki.archlinux.org/index.php/Dnscrypt-proxy
-		echo "$green""Setting up DNSCrypt and DNSMasq""$reset"
-		arch-chroot /mnt pacman -S dnscrypt-proxy --noconfirm
-		#Remove stock network manager configs (Conflict with dnscrypt)
-		rm -r /mnt/etc/NetworkManager/dnsmasq.d/*
-		rm -r /mnt/etc/NetworkManager/conf.d/dns-servers.conf
-		rm -r /mnt/etc/NetworkManager/conf.d/dns.conf
-		#Move new network manager dns configs
-		mv Arch-Linux-Installer-master/configs/dns/dns.conf /mnt/etc/NetworkManager/conf.d/
-		mv Arch-Linux-Installer-master/configs/dns/dns-servers.conf /mnt/etc/NetworkManager/conf.d/
-		#Remove stock configs
-		rm -r /mnt/etc/resolv.conf
-		rm -r /mnt/etc/dnscrypt-proxy/dnscrypt-proxy.toml
-		rm -r /mnt/etc/dnsmasq.conf
-		#Move custom dnscrypt, dnsmasq and resolv configs files
-		mv Arch-Linux-Installer-master/configs/dns/dnscrypt-proxy.toml /mnt/etc/dnscrypt-proxy/
-		mv Arch-Linux-Installer-master/configs/dns/dnsmasq.conf /mnt/etc/dnsmasq.conf
-		mv Arch-Linux-Installer-master/configs/dns/resolv.conf /mnt/etc/resolv.conf
-		#Enable services
-		arch-chroot /mnt systemctl enable dnscrypt-proxy.service
-		arch-chroot /mnt systemctl enable dnsmasq.service
-		sleep 3s
-		;;
-
-		q) #Finish
-		#Unmount based on encryption
-		if [ "$encrypt" = y ]; then
-			umount -R /mnt
-			umount -R /mnt/boot
-			cryptsetup close cryptroot
-		fi
-		if [ "$encrypt" = n ]; then
-			umount -R /mnt
-			umount -R /mnt/boot
-		fi
-		clear
-		echo "$green""Installation Complete. Thanks for installing!""$reset"
-		sleep 1s
-		exit 0
-		;;
-	esac
 done
