@@ -15,7 +15,7 @@ WIDTH=135
 #WIDTH=0 #0 auto sets
 CHOICE_HEIGHT=40
 #Dialog options for user input
-dialogBacktitle="Alex's Arch Linux Installer"
+dialogBacktitle="InfoSec Linux Installer"
 dialogHeight=20
 dialogWidth=80
 
@@ -473,7 +473,7 @@ clear
 ###ADD INFOSECLINUX###
 #Add infoseclinux to pacman.conf
 cat << EOF >> /etc/pacman.conf
-
+#Add mirror here once it's set up
 
 ###MIRRORLIST SORTING###
 #Sort mirrors
@@ -490,7 +490,7 @@ sed '/mirrors.kernel.org/d' -i /etc/pacman.d/mirrorlist
 clear
 dialog --scrollbar --timeout 1 --backtitle "$dialogBacktitle" \
 --title "Installing packages" \
---prgbox "Installing base and base-devel package groups" "pacstrap /mnt base base-devel zlib-ng iptables-nft jfsutils nilfs-utils --noconfirm" "$HEIGHT" "$WIDTH"
+--prgbox "Installing base and base-devel package groups" "pacstrap /mnt base base-devel zlib-ng iptables-nft jfsutils nilfs-utils nano git --noconfirm" "$HEIGHT" "$WIDTH"
 
 
 ###PACMAN SETUP###
@@ -586,21 +586,16 @@ dialog --scrollbar --timeout 1 --backtitle "$dialogBacktitle" \
 --prgbox "Installing Archlinuxcn keyring" "arch-chroot /mnt pacman -Syy" "$HEIGHT" "$WIDTH"
 clear
 
-### MEGAN - COME HERE TOMORROW TO DO DESKTOP PICKING###
 ### FINISH INSPECTING CODE HERE TOMORROW ###
 
 ###PACKAGE INSTALLATION###
 #Install desktop and software
 dialog --scrollbar --timeout 1 --backtitle "$dialogBacktitle" \
---title "Installing additional desktop software" \
---prgbox "Installing desktop environment" "arch-chroot /mnt pacman -Syy && arch-chroot /mnt pacman -S --needed wget nano xfce4-panel xfce4-whiskermenu-plugin xfce4-taskmanager xfce4-cpufreq-plugin xfce4-pulseaudio-plugin xfce4-sensors-plugin xfce4-screensaver thunar-archive-plugin dialog lxdm network-manager-applet nm-connection-editor networkmanager-openvpn networkmanager libnm xfce4 yay grub-customizer baka-mplayer gparted gnome-disk-utility thunderbird xfce4-terminal file-roller pigz lzip lzop cpio lrzip zip unzip p7zip htop libreoffice-fresh hunspell-en_US jre-openjdk jdk-openjdk zafiro-icon-theme deluge-gtk bleachbit gnome-calculator geeqie mpv gedit gedit-plugins papirus-icon-theme ttf-ubuntu-font-family ttf-ibm-plex bash-completion pavucontrol redshift youtube-dl ffmpeg atomicparsley ntp openssh gvfs-mtp cpupower ttf-dejavu otf-symbola ttf-liberation noto-fonts pulseaudio-alsa xfce4-notifyd xfce4-netload-plugin xfce4-screenshooter dmidecode macchanger pbzip2 smartmontools speedtest-cli neofetch net-tools xorg-xev dnsmasq downgrade nano-syntax-highlighting s-tui imagemagick libxpresent freetype2 rsync screen acpi keepassxc xclip noto-fonts-emoji unrar bind-tools arch-install-scripts earlyoom arc-gtk-theme memtest86+ xorg-xrandr iotop libva-mesa-driver mesa-vdpau libva-vdpau-driver libvdpau-va-gl vdpauinfo libva-utils gpart pinta irqbalance xf86-video-fbdev xf86-video-intel xf86-video-amdgpu xf86-video-ati xf86-video-nouveau vulkan-icd-loader firefox firefox-ublock-origin hdparm usbutils logrotate ethtool systembus-notify dbus-broker gpart peek firefox-clearurls tldr compsize kitty vnstat kernel-modules-hook mlocate libgsf libopenraw libgepub gtk-engine-murrine gvfs-smb mesa-utils firefox-decentraleyes xorg-xkill arandr f2fs-tools --noconfirm" "$HEIGHT" "$WIDTH"
-clear
-#Additional aurmageddon packages
-dialog --scrollbar --timeout 1 --backtitle "$dialogBacktitle" \
---title "Installing additional desktop software" \
---prgbox "Installing Aurmageddon packages" "arch-chroot /mnt pacman -S surfn-icons-git pokemon-colorscripts-git arch-silence-grub-theme-git archlinux-lxdm-theme-full bibata-cursor-translucent usbimager matcha-gtk-theme nordic-theme nordic-darker-standard-buttons-theme pacman-cleanup-hook ttf-unifont layan-gtk-theme-git lscolors-git zramswap prelockd preload firefox-extension-user-agent-switcher skeuos-gtk ananicy-cpp ananicy-rules-git uresourced pacman-updatedb-hook ntfsprogs-ntfs3 graphite-gtk-theme-nord-rimless-compact-git --noconfirm" "$HEIGHT" "$WIDTH"
+--title "Installing essential window manager software" \
+--prgbox "Installing desktop environment" "arch-chroot /mnt pacman -Syy && arch-chroot /mnt pacman -S --needed wget lxdm xorg xorg-server" "$HEIGHT" "$WIDTH"
 clear
 
+#########DESKTOP PICKING################
 
 ###CORE SYSTEM SERVICES###
 #Enable services
@@ -702,15 +697,6 @@ sed "s,\#\ set keycolor cyan, set keycolor cyan,g" -i /mnt/etc/nanorc
 sed "s,\#\ set functioncolor green, set functioncolor green,g" -i /mnt/etc/nanorc
 sed "s,\#\ include \"/usr/share/nano/\*.nanorc\", include \"/usr/share/nano/\*.nanorc\",g" -i /mnt/etc/nanorc
 echo "include /usr/share/nano-syntax-highlighting/*.nanorc" >> /mnt/etc/nanorc
-
-
-###PULSEAUDIO SETUP###
-#Change pulseaudio to have higher priority and enable realtime priority 
-#https://wiki.archlinux.org/index.php/Gaming#Enabling_realtime_priority_and_negative_nice_level
-sed "s,\; high-priority = yes,high-priority = yes,g" -i /mnt/etc/pulse/daemon.conf
-sed "s,\; nice-level = -11,nice-level = -11,g" -i /mnt/etc/pulse/daemon.conf
-sed "s,\; realtime-scheduling = yes,realtime-scheduling = yes,g" -i /mnt/etc/pulse/daemon.conf
-sed "s,\; realtime-priority = 5,realtime-priority = 5,g" -i /mnt/etc/pulse/daemon.conf
 
 
 ###SUDO SETUP###
@@ -861,11 +847,6 @@ arch-chroot /mnt ln -s /etc/fonts/conf.avail/10-sub-pixel-rgb.conf /etc/fonts/co
 arch-chroot /mnt ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
 arch-chroot /mnt ln -s /etc/fonts/conf.avail/10-hinting-full.conf /etc/fonts/conf.d
 sed "s,\#export FREETYPE_PROPERTIES=\"truetype\:interpreter-version=40\",export FREETYPE_PROPERTIES=\"truetype\:interpreter-version=40\",g" -i /mnt/etc/profile.d/freetype2.sh
-
-
-###XORG###
-#Add xorg file that allows the user to press control + alt + backspace to kill xorg (returns to login manager)
-mv Arch-Linux-Installer-master/configs/xorg/90-zap.conf /mnt/etc/X11/xorg.conf.d/
 
 
 ###NETWORKMANAGER###
@@ -1020,17 +1001,6 @@ if [[ "$boot" = bios ]]; then
 	--prgbox "Installing grub for legacy BIOS" "arch-chroot /mnt grub-install --target=i386-pc $storage --recheck" "$HEIGHT" "$WIDTH"
 fi
 clear
-
-
-###GRUB MENUS###
-#Add custom menus to grub
-#https://wiki.archlinux.org/index.php/GRUB#EFI_binaries
-#Move grub boot items
-mkdir -p /mnt/boot/EFI/tools
-mkdir -p /mnt/boot/EFI/games
-mv Arch-Linux-Installer-master/configs/grub/tools/* /mnt/boot/EFI/tools/
-mv Arch-Linux-Installer-master/configs/grub/games/*.efi /mnt/boot/EFI/games/
-mv Arch-Linux-Installer-master/configs/grub/custom.cfg /mnt/boot/grub/
 
 
 ###GRUB BOOT OPTIONS###
