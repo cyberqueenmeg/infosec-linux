@@ -61,14 +61,15 @@ selection=${selection:- 1}
 		echo "11 - Manjaro Linux"
 		echo "12 - Arch Linux"
 		echo "13 - Endeavour OS"
-		echo "14 - Solus"
-		echo "15 - Zorin OS"
-		echo "16 - POP! OS"
-		echo "17 - Raspbian"
-		echo "18 - Pear OS"
-		echo "19 - Solaris"
-		echo "20 - FreeBSD"
-		echo "21 - airyx"
+		echo "14 - Parrot Home"
+		echo "15 - Solus"
+		echo "16 - Zorin OS"
+		echo "17 - POP! OS"
+		echo "18 - Raspbian"
+		echo "19 - Pear OS"
+		echo "20 - Solaris"
+		echo "21 - FreeBSD"
+		echo "22 - airyx"
 		
 
 
