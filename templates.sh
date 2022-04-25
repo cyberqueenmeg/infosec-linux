@@ -38,10 +38,56 @@ selection=${selection:- 1}
 
 			case "${entry[@]}" in
 				1)
+				#user needs to run 'sudo apt update && apt upgrade' after download
+				wget https://kali.download/virtual-images/kali-2022.1/kali-linux-2022.1-virtualbox-amd64.ova
 				;;
 
 				2)
+				#user needs to run 'sudo apt update && apt upgrade' after download
+				wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
 				;;
+				
+				3)
+				#user needs to run 'sudo pacman -Syu' after download
+				wget https://mirrors.fosshost.org/blackarch/ova/blackarch-linux-2021.09.01.ova
+				;;
+				
+				4)
+				#user needs to run 'sudo dnf upgrade --refresh && reboot'
+				wget https://download.fedoraproject.org/pub/alt/releases/35/Labs/x86_64/iso/Fedora-Security-Live-x86_64-35-1.2.iso
+				;;
+				
+				5)
+				#user needs to run 'sudo soup'
+				wget https://download.securityonion.net/file/securityonion/securityonion-2.3.120-20220425.iso
+				;;
+				
+				6)
+				#user needs to update from manager GUI
+				wget https://atxfiles.netgate.com/mirror/downloads/pfSense-CE-2.6.0-RELEASE-amd64.iso.gz
+				;;
+				
+				7)
+				#user needs to run 'sudo apt update && apt upgrade' after download
+				wget https://deb.parrot.sh/direct/parrot/iso/caine/caine12.4.iso
+				;;
+				
+				8)
+				wget http://downloads.csilinux.com/CSI%20Linux%202021.2.ova
+				;;
+				
+				9)
+				#user needs to run 'sudo apt update && apt upgrade' after download
+				wget https://download.tracelabs.org/TL-OSINT-2022.1-amd64.iso
+				;;
+				
+				10)
+				;;
+				
+				11)
+				;;
+				
+				
 		;;
 		
 		2)
