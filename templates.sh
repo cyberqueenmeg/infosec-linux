@@ -30,7 +30,9 @@ read -r -p selection
 				echo "11 - Security Dojo Hacking Distribution"
 				echo "12 - Pentoo"
 				echo "13 - Remnux Malware Analysis"
-				#Add 'custom' InfoSec Linux pentesting distros for specific purposes - malware analysis, mobile, etc
+				echo "14 - InfoSec Linux Malware Analysis"
+				echo "15 - InfoSec Linux Mobile Hacking"
+				echo "16 - InfoSec Linux Web App Hacking"
 
 				read -r -p cyberselection
 				cyberselection=${cyberselection:- 1}
@@ -158,6 +160,27 @@ read -r -p selection
 					read vmname
 					VBoxManage import remnux-v7-focal-virtualbox.ova --vmname $(vmname) -n
 					;;
+					
+					14)
+					wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-malwareanalysis.vbox
+					echo "What do you want to name your VM?"
+					read vmname
+					VBoxManage import infoseclinux-malwareanalysis.vbox --vmname $(vmname) -n
+					;;
+					
+					15)
+					wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-mobilehacking.vbox
+					echo "What do you want to name your VM?"
+					read vmname
+					VBoxManage import infoseclinux-mobilehacking.vbox --vmname $(vmname) -n
+					;;
+					
+					16)
+					wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-malwareanalysis.vbox
+					echo "What do you want to name your VM?"
+					read vmname
+					VBoxManage import infoseclinux-webapphacking.vbox --vmname $(vmname) -n
+					;;
 			2)
 				echo "Which generic operating system would you like to install right now?"
 				declare -a genericselection
@@ -182,7 +205,7 @@ read -r -p selection
 				echo "18 - POP! OS"
 				echo "19 - Raspbian"
 				echo "20 - FreeBSD"
-				echo "21 - airyx"
+				echo "21 - airyx OS"
 				
 
 
