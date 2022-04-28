@@ -3,6 +3,8 @@
 echo "Welcome to the InfoSec Linux Virtual Machine Setup Wizard!"
 echo ""
 
+echo "Checking dependencies..."
+
 declare -a selection
 
 echo "Would you like to install a cybersecurity OS or a generic OS right now?"
