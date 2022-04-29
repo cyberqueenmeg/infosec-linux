@@ -4,6 +4,17 @@ echo "Welcome to the InfoSec Linux Virtual Machine Setup Wizard!"
 echo ""
 
 echo "Checking dependencies..."
+vBoxCheck=$(whereis virtualbox)
+wGetCheck=$(whereis wget)
+
+if [[vBoxCheck != *"/usr/bin"*]]; then
+
+fi
+
+if [[wGetCheck != *"/usr/bin"*]]; then
+
+fi
+
 
 declare -a selection
 
