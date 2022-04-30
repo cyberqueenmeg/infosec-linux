@@ -8,11 +8,51 @@ vBoxCheck=$(whereis virtualbox)
 wGetCheck=$(whereis wget)
 
 if [[vBoxCheck != *"/usr/bin"*]]; then
-
+	
+	if [ -x "$(command -v apk)" ]; then 
+		sudo apk add --no-cache --no-confirm virtualbox
+	elif [ -x "$(command -v apt-get)" ]; then 
+		sudo apt-get install --no-confirm virtualbox
+	elif [ -x "$(command -v dnf)" ]; then 
+		sudo dnf install --no-confirm virtualbox
+	elif [ -x "$(command -v zypper)" ];  then 
+		sudo zypper install --no-confirm virtualbox
+	elif [ -x "$(command -v pacman)" ]; then
+		sudo pacman -S install --no-confirm virtualbox
+	elif [ -x "$(command -v emerge)" ]; then
+	
+	elif [ -x "$(command -v snap)" ]; then
+	
+	elif [ -x "$(command -v flatpak)" ]; then
+	
+	else 
+		echo "FAILED TO INSTALL PACKAGE: Package manager not found. You must manually install virtualbox. Exiting"
+		exit
+	fi
 fi
 
 if [[wGetCheck != *"/usr/bin"*]]; then
-
+	
+	if [ -x "$(command -v apk)" ]; then 
+		sudo apk add --no-cache --no-confirm wget
+	elif [ -x "$(command -v apt-get)" ]; then 
+		sudo apt-get install --no-confirm wget
+	elif [ -x "$(command -v dnf)" ]; then 
+		sudo dnf install --no-confirm wget
+	elif [ -x "$(command -v zypper)" ];  then 
+		sudo zypper install --no-confirm wget
+	elif [ -x "$(command -v pacman)" ]; then
+		sudo pacman -S install --no-confirm wget
+	elif [ -x "$(command -v emerge)" ]; then
+	
+	elif [ -x "$(command -v snap)" ]; then
+	
+	elif [ -x "$(command -v flatpak)" ]; then
+	
+	else 
+		echo "FAILED TO INSTALL PACKAGE: Package manager not found. You must manually install wget. Exiting" 
+		exit
+	fi
 fi
 
 
