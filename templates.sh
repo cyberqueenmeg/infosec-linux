@@ -3,58 +3,22 @@
 echo "Welcome to the InfoSec Linux Virtual Machine Setup Wizard!"
 echo ""
 
-echo "Checking dependencies..."
-vBoxCheck=$(whereis virtualbox)
-wGetCheck=$(whereis wget)
+echo "To run this program, you need to install VirtualBox and wGet. The VirtualBox extension pack is highly recommended."
+echo "Do you have all of these programs installed? (y/n)"
+read dependencies
 
-if [[vBoxCheck != *"/usr/bin"*]]; then
-	
-	if [ -x "$(command -v apk)" ]; then 
-		sudo apk add --no-cache --no-confirm virtualbox
-	elif [ -x "$(command -v apt-get)" ]; then 
-		sudo apt-get install --no-confirm virtualbox
-	elif [ -x "$(command -v dnf)" ]; then 
-		sudo dnf install --no-confirm virtualbox
-	elif [ -x "$(command -v zypper)" ];  then 
-		sudo zypper install --no-confirm virtualbox
-	elif [ -x "$(command -v pacman)" ]; then
-		sudo pacman -S install --no-confirm virtualbox
-	elif [ -x "$(command -v emerge)" ]; then
-	
-	elif [ -x "$(command -v snap)" ]; then
-	
-	elif [ -x "$(command -v flatpak)" ]; then
-	
-	else 
-		echo "FAILED TO INSTALL PACKAGE: Package manager not found. You must manually install virtualbox. Exiting"
-		exit
-	fi
+if [dependencies == 'n' || dependencies == 'N']
+	echo "Please install these dependencies and restart the program"
+	echo "Exiting..."
+	exit
 fi
 
-if [[wGetCheck != *"/usr/bin"*]]; then
-	
-	if [ -x "$(command -v apk)" ]; then 
-		sudo apk add --no-cache --no-confirm wget
-	elif [ -x "$(command -v apt-get)" ]; then 
-		sudo apt-get install --no-confirm wget
-	elif [ -x "$(command -v dnf)" ]; then 
-		sudo dnf install --no-confirm wget
-	elif [ -x "$(command -v zypper)" ];  then 
-		sudo zypper install --no-confirm wget
-	elif [ -x "$(command -v pacman)" ]; then
-		sudo pacman -S install --no-confirm wget
-	elif [ -x "$(command -v emerge)" ]; then
-	
-	elif [ -x "$(command -v snap)" ]; then
-	
-	elif [ -x "$(command -v flatpak)" ]; then
-	
-	else 
-		echo "FAILED TO INSTALL PACKAGE: Package manager not found. You must manually install wget. Exiting" 
-		exit
-	fi
+if [dependencies != 'y' && dependencies != 'Y' && dependencies != 'n' && dependencies != 'N']
+	echo "An error has occured"
+	echo "Please enter y or Y for yes or n or N for no"
+	echo "Exiting..."
+	exit
 fi
-
 
 declare -a selection
 
