@@ -27,9 +27,6 @@ echo "Select 1 for cybersecurity and select 2 for generic"
 
 read -r -p selection
 
-	for entry in $selection ;do
-
-		case $selection in
 
 			1)
 				echo "Which cybersecurity operating system would you like to install right now?"
@@ -224,8 +221,6 @@ read -r -p selection
 				echo "20 - FreeBSD"
 				echo "21 - airyx OS"
 				
-
-
 				read -r -p genericselection
 				genericselection=${genericselection:- 1}
 					for entry in $genericselection ;do
