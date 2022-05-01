@@ -52,7 +52,7 @@ read -r -p selection
 				echo "16 - InfoSec Linux Web App Hacking"
 
 				read -r -p cyberselection
-				cyberselection=${cyberselection:- 1}
+				
 				for entry in $cyberselection ;do
 
 					1)
