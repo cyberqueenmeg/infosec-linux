@@ -10,14 +10,14 @@ read dependencies
 if [dependencies == 'n' || dependencies == 'N']
 	echo "Please install these dependencies and restart the program"
 	echo "Exiting..."
-	exit
+	exit 1
 fi
 
 if [dependencies != 'y' && dependencies != 'Y' && dependencies != 'n' && dependencies != 'N']
 	echo "An error has occured"
 	echo "Please enter y or Y for yes or n or N for no"
 	echo "Exiting..."
-	exit
+	exit 1
 fi
 
 declare -a selection
