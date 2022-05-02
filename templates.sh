@@ -8,14 +8,14 @@ echo "Do you have all of these programs installed? (y/n)"
 echo ""
 read dependencies
 
-if [[$dependencies == "n" || $dependencies == "N"]] 
+if [$dependencies -eq "n" || $dependencies -eq "N"] 
 then
 	echo "Please install these dependencies and restart the program"
 	echo "Exiting..."
 	exit 1
 fi
 
-if [[$dependencies != "y" && $dependencies != "Y" && $dependencies != "n" && $dependencies != "N"]]
+if [$dependencies != "y" && $dependencies != "Y" && $dependencies != "n" && $dependencies != "N"]
 then
 	echo "An error has occured"
 	echo "Please enter y or Y for yes or n or N for no"
