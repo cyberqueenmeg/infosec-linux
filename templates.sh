@@ -28,6 +28,7 @@ echo "Select 1 for cybersecurity and select 2 for generic"
 
 read selection
 
+
 if [ "$selection" == 1 ]
 then
     echo "Which cybersecurity operating system would you like to install right now? Please enter only one value."
@@ -182,7 +183,6 @@ then
         echo "Exiting..."
         exit 1
     fi
-fi
 elif [ "$selection" == "2" ]
 then
     echo "Which generic operating system would you like to install right now? Please enter only one value."
@@ -254,7 +254,9 @@ then
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name Fedora-Server-dvd-x86_64-35-1.2.iso
         VBoxManage startvm $(vmname)
-    elif [ "$genericselection" == "6" ]
+    elho "Exiting..."
+406
+        exit 1if [ "$genericselection" == "6" ]
     then
         wget https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso
         echo "What do you want to name your VM?"
@@ -372,7 +374,9 @@ then
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ "$genericselection" == "19" ]
+    elifho "Exiting..."
+406
+        exit 1 [ "$genericselection" == "19" ]
     then
         wget https://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
         echo "What do you want to name your VM?"
@@ -403,4 +407,9 @@ then
         echo "An error has occured. Please try again and enter the number of the VM you want to install"
         echo "Exiting..."
         exit 1
+else
+    echo "An error has occured. Please try again and enter the number of the VM you want to install"
+    echo "Exiting..."
+    exit 1
+	
 fi
