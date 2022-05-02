@@ -49,8 +49,6 @@ then
     echo "15 - InfoSec Linux Mobile Hacking"
     echo "16 - InfoSec Linux Web App Hacking"
     read cyberselection
-fi
-
     if [ "$cyberselection" == "1" ]
     then
         #user needs to run 'sudo apt update && apt upgrade' after download
@@ -183,6 +181,8 @@ fi
         echo "An error has occured. Please try again and enter the number of the VM you want to install"
         echo "Exiting..."
         exit 1
+    fi
+fi
 elif [ "$selection" == "2" ]
 then
     echo "Which generic operating system would you like to install right now? Please enter only one value."
