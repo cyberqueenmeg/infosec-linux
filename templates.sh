@@ -8,14 +8,14 @@ echo "Do you have all of these programs installed? (y/n)"
 echo ""
 read dependencies
 
-if [ $dependencies = "n" ] || [ $dependencies = "N" ] 
+if [ "$dependencies" = "n" ] || [ "$dependencies" = "N" ] 
 then
 	echo "Please install these dependencies and restart the program"
 	echo "Exiting..."
 	exit 1
 fi
 
-if [ $dependencies != "y" ] && [ $dependencies != "Y" ] && [ $dependencies != "n" ] && [ $dependencies != "N" ]
+if [ "$dependencies" != "y" ] && [ "$dependencies" != "Y" ] && [ "$dependencies" != "n" ] && [ "$dependencies" != "N" ]
 then
 	echo "An error has occured"
 	echo "Please enter y or Y for yes or n or N for no"
@@ -28,7 +28,7 @@ echo "Select 1 for cybersecurity and select 2 for generic"
 
 read selection
 
-if [ $selection == 1 ]
+if [ "$selection" == 1 ]
 then
     echo "Which cybersecurity operating system would you like to install right now? Please enter only one value."
     declare -a cyberselection
@@ -183,9 +183,7 @@ fi
         echo "An error has occured. Please try again and enter the number of the VM you want to install"
         echo "Exiting..."
         exit 1
-fi
-
-if [ $selection == 2 ]
+elif [ "$selection" == "2" ]
 then
     echo "Which generic operating system would you like to install right now? Please enter only one value."
     echo "1 - Debian"
@@ -211,7 +209,7 @@ then
     echo "21 - airyx OS"
 
     read genericselection
-    if [ $genericselection == 1 ]
+    if [ "$genericselection" == "1" ]
     then
         wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso
         echo "What do you want to name your VM?"
@@ -220,8 +218,7 @@ then
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name debian-11.3.0-amd64-netinst.iso
         VBoxManage startvm $(vmname)
-fi
-    elif [ $genericselection == 2 ]
+    elif [ "$genericselection" == "2" ]
     then
         wget https://releases.ubuntu.com/22.04/ubuntu-22.04-desktop-amd64.iso
         echo "What do you want to name your VM?"
@@ -230,7 +227,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name ubuntu-22.04-desktop-amd64.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 3 ]
+    elif [ "$genericselection" == "3" ]
     then
         wget https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso
         echo "What do you want to name your VM?"
@@ -239,7 +236,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name ubuntu-20.04.4-live-server-amd64.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 4 ]
+    elif [ "$genericselection" == "4" ]
     then
         wget https://download.fedoraproject.org/pub/fedora/linux/releases/35/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-35-1.2.iso
         echo "What do you want to name your VM?"
@@ -248,7 +245,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name Fedora-Workstation-Live-x86_64-35-1.2.iso 
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 5 ]
+    elif [ "$genericselection" == "5" ]
     then
         wget https://download.fedoraproject.org/pub/fedora/linux/releases/35/Server/x86_64/iso/Fedora-Server-dvd-x86_64-35-1.2.iso
         echo "What do you want to name your VM?"
@@ -257,7 +254,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name Fedora-Server-dvd-x86_64-35-1.2.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 6 ]
+    elif [ "$genericselection" == "6" ]
     then
         wget https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso
         echo "What do you want to name your VM?"
@@ -266,7 +263,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name openSUSE-Leap-15.3-DVD-x86_64-Current.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 7 ]
+    elif [ "$genericselection" == "7" ]
     then
         wget http://mirror.arizona.edu/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Everything-2009.iso
         echo "What do you want to name your VM?"
@@ -275,7 +272,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name CentOS-7-x86_64-Everything-2009.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 8 ]
+    elif [ "$genericselection" == "8" ]
     then
         wget https://yum.oracle.com/ISOS/OracleLinux/OL8/u5/x86_64/OracleLinux-R8-U5-x86_64-dvd.iso
         echo "What do you want to name your VM?"
@@ -284,7 +281,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name OracleLinux-R8-U5-x86_64-dvd.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 9 ]
+    elif [ "$genericselection" == "9" ]
     then
         wget https://yum.oracle.com/ISOS/OracleLinux/OL7/u9/x86_64/OracleLinux-R7-U9-Server-x86_64-dvd.iso
         echo "What do you want to name your VM?"
@@ -293,16 +290,16 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name OracleLinux-R7-U9-Server-x86_64-dvd.iso
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 10 ]
+    elif [ "$genericselection" == "10" ]
     then
         https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220424T170534Z/livegui-amd64-20220424T170534Z.iso
         echo "What do you want to name your VM?"
         read vmname
         VBoxManage createvm --name $(vmname)
         VBoxManage storagectl $(vmname) --bootable yes
-        VBoxManage storageattach $(vmname) --name #starthere
+        VBoxManage storageattach $(vmname) --name
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 11 ]
+    elif [ "$genericselection" == "11" ]
     then
         wget https://download.manjaro.org/xfce/21.2.6/manjaro-xfce-21.2.6-220416-linux515.iso
         echo "What do you want to name your VM?"
@@ -311,7 +308,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 12 ]
+    elif [ "$genericselection" == "12" ]
     then
         wget https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/54317/artifacts/file/output/Arch-Linux-x86_64-virtualbox-20220426.54317.box
         VBoxManage import --vmname vmname -n
@@ -321,7 +318,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 13 ]
+    elif [ "$genericselection" == "13" ]
     then
         wget https://github.com/endeavouros-team/ISO/releases/download/1-EndeavourOS-ISO-releases-archive/EndeavourOS_Apollo_22_1.iso
         echo "What do you want to name your VM?"
@@ -330,7 +327,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 14 ]
+    elif [ "$genericselection" == "14" ]
     then
         wget https://sourceforge.net/projects/arcolinux-community-editions/files/cinnamon/arcolinuxb-cinnamon-v22.03.07-x86_64.iso/download
         echo "What do you want to name your VM?"
@@ -339,7 +336,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 15 ]
+    elif [ "$genericselection" == "15" ]
     then
         wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-home-5.0_amd64.iso
         echo "What do you want to name your VM?"
@@ -348,7 +345,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 16 ]
+    elif [ "$genericselection" == "16" ]
     then
         wget https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso
         echo "What do you want to name your VM?"
@@ -357,7 +354,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 17 ]
+    elif [ "$genericselection" == "17" ]
     then
         wget http://deb.parrot.sh/parrot/iso/zorin/Zorin-OS-16-Core-64-bit-r4.iso
         echo "What do you want to name your VM?"
@@ -366,7 +363,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 18 ]
+    elif [ "$genericselection" == "18" ]
     then
         wget https://pop-iso.sfo2.cdn.digitaloceanspaces.com/22.04/amd64/intel/4/pop-os_22.04_amd64_intel_4.iso
         echo "What do you want to name your VM?"
@@ -375,7 +372,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 19 ]
+    elif [ "$genericselection" == "19" ]
     then
         wget https://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
         echo "What do you want to name your VM?"
@@ -384,7 +381,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 20 ]
+    elif [ "$genericselection" == "20" ]
     then
         wget https://download.freebsd.org/releases/amd64/amd64/ISO-IMAGES/13.0/FreeBSD-13.0-RELEASE-amd64-bootonly.iso
         echo "What do you want to name your VM?"
@@ -393,7 +390,7 @@ fi
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elif [ $genericselection == 21 ]
+    elif [ "$genericselection" == "21" ]
     then
         wget https://mirrors.nomadlogic.org/nightly/airyxOS_0.4.0pre2_f13_5030978304344064_amd64.iso
         echo "What do you want to name your VM?"
