@@ -8,14 +8,14 @@ echo "Do you have all of these programs installed? (y/n)"
 echo ""
 read dependencies
 
-if [ $dependencies -eq "n" || $dependencies -eq "N" ] 
+if [ $dependencies = "n" ] || [ $dependencies = "N" ] 
 then
 	echo "Please install these dependencies and restart the program"
 	echo "Exiting..."
 	exit 1
 fi
 
-if [ $dependencies != "y" && $dependencies != "Y" && $dependencies != "n" && $dependencies != "N" ]
+if [ $dependencies != "y" ] && [ $dependencies != "Y" ] && [ $dependencies != "n" ] && [ $dependencies != "N" ]
 then
 	echo "An error has occured"
 	echo "Please enter y or Y for yes or n or N for no"
@@ -49,6 +49,7 @@ then
     echo "15 - InfoSec Linux Mobile Hacking"
     echo "16 - InfoSec Linux Web App Hacking"
     read -r -p cyberselection
+fi
 
     if [ $cyberselection -eq 1 ]
     then
@@ -167,6 +168,7 @@ then
         read vmname
         VBoxManage import infoseclinux-malwareanalysis.vbox --vmname $(vmname) -n
     elif [ $cyberselection -eq 15 ]
+    then
         wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-mobilehacking.vbox
         echo "What do you want to name your VM?"
         read vmname
@@ -181,7 +183,9 @@ then
         echo "An error has occured. Please try again and enter the number of the VM you want to install"
         echo "Exiting..."
         exit 1
-elif [ $selection -eq 2 ]
+fi
+
+if [ $selection -eq 2 ]
 then
     echo "Which generic operating system would you like to install right now? Please enter only one value."
     echo "1 - Debian"
@@ -216,6 +220,7 @@ then
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name debian-11.3.0-amd64-netinst.iso
         VBoxManage startvm $(vmname)
+fi
     elif [ $genericselection -eq 2 ]
     then
         wget https://releases.ubuntu.com/22.04/ubuntu-22.04-desktop-amd64.iso
@@ -401,8 +406,4 @@ then
         echo "An error has occured. Please try again and enter the number of the VM you want to install"
         echo "Exiting..."
         exit 1
-else
-    echo "An error has occured. Please enter 1 or 2 to make your selection."
-    echo "Exiting..."
-    exit 1
 fi
