@@ -133,26 +133,8 @@ then
     elif [ "$cyberselection" == "10" ]
     then
         #user needs to run 'sudo apt update && apt upgrade' after download. It will take a while since it's based on Xubuntu 12.
-        wget https://downloads.sourceforge.net/project/honeydrive/HoneyDrive%203%20Royal%20Jelly%20edition/HoneyDrive_3_Royal_Jelly.ova?ts=gAAAAABiaBz_eLxLj3zXZSe_hb9HySo5Uwu5WXGb2eki2bnhFoOGbjYY_JD1oc5UTriKNw2BX8IGuPnKBVxQPC8LrMMYLTqcQg%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fhoneydrive%2Ffiles%2Flatest%2Fdownload
-        echo "What do you want to name your VM?"
-        read vmname
-        VBoxManage import HoneyDrive_3_Royal_Jelly.ova --vmname $(vmname) -n
-     elif [ "$cyberselection" == "11" ]
-     then
-        #user needs to run 'sudo apt update && apt upgrade' after download.
-        wget https://downloads.sourceforge.net/project/websecuritydojo/Version_3.4.1/Dojo-3.4.1.ova?ts=gAAAAABiaB0j24e0pxLqcRhnkLLDMkuYzcD_W5jqAu_vic8i4B8Y6Hz1A5rLirpSyhopFuf55UFr1AAurWSVvl2wWB2GNJdFPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebsecuritydojo%2Ffiles%2Flatest%2Fdownload
-        echo "What do you want to name your VM?"
-        read vmname
-        VBoxManage import Dojo-3.4.1.ova --vmname $(vmname) -n
-    elif [ "$cyberselection" == "12" ]
-    then
-        #user needs to run 'emerge --ask --oneshot sys-apps/portage' after download.
-        wget https://pentoo.osuosl.org/daily-autobuilds/Pentoo_Full_x86_hardened/pentoo-full-x86-hardened-2022.0_p20220312.iso
-        echo "What do you want to name your VM?"
-        read vmname
-        VBoxManage createvm --name $(vmname)
-        VBoxManage storagectl $(vmname) --bootable yes
-        VBoxManage storageattach $(vmname) --name pentoo-full-x86-hardened-2022.0_p20220312.iso
+        wget https://downloads.sour
+	vmname) --name pentoo-full-x86-hardened-2022.0_p20220312.iso
         VBoxManage startvm $(vmname)
     elif [ "$cyberselection" == "13" ]
     then
@@ -254,9 +236,7 @@ then
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname) --name Fedora-Server-dvd-x86_64-35-1.2.iso
         VBoxManage startvm $(vmname)
-    elho "Exiting..."
-406
-        exit 1if [ "$genericselection" == "6" ]
+    if [ "$genericselection" == "6" ]
     then
         wget https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso
         echo "What do you want to name your VM?"
@@ -374,9 +354,7 @@ then
         VBoxManage storagectl $(vmname) --bootable yes
         VBoxManage storageattach $(vmname)
         VBoxManage startvm $(vmname)
-    elifho "Exiting..."
-406
-        exit 1 [ "$genericselection" == "19" ]
+    elif [ "$genericselection" == "19" ]
     then
         wget https://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
         echo "What do you want to name your VM?"
