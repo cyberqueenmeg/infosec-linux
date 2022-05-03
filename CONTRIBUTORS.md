@@ -15,4 +15,4 @@ Alex Gaudino (@wailord284) - pacman automation cleanup
 
 Jean-Charles Naud (@jcnaud) - base code/inspiration for the ISO download script
 
-Aaron Jones (retro64xyz) - reminding me to add an OSS license to my code - it is now under the GNU General Public License v3.0
+Aaron Jones (@retro64xyz) - reminding me to add an OSS license to my code - it is now under the GNU General Public License v3.0
