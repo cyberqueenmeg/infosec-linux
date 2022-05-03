@@ -52,7 +52,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             wget https://kali.download/virtual-images/kali-2022.1/kali-linux-2022.1-virtualbox-amd64.ova
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage import kali-linux-2022.1-virtualbox-amd64.ova --vmname $(vmname) -n
+            VBoxManage import kali-linux-2022.1-virtualbox-amd64.ova --name "$(vmname)" -n
 	fi
         if [ "$cyberselection" == "2" ]; then
             #user needs to run 'sudo apt How to Import a Python Function fro...update && apt upgrade' after download
