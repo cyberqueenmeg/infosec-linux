@@ -50,7 +50,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
         if [ "$cyberselection" == "1" ]; then
             #user needs to run 'sudo apt update && apt upgrade' after download
             wget https://kali.download/virtual-images/kali-2022.1/kali-linux-2022.1-virtualbox-amd64.ova
-            VBoxManage import kali-linux-2022.1-virtualbox-amd64.ova
+            VBoxManage import kali-linux-2022.1-virtualbox-amd64.ova --accept-license
 	    fi
         if [ "$cyberselection" == "2" ]; then
             #user needs to run 'sudo apt How to Import a Python Function fro...update && apt upgrade' after download
