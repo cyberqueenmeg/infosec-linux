@@ -66,7 +66,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
         if [ "$cyberselection" == "3" ]; then
             #user needs to run 'sudo pacman -Syu' after download
             wget https://mirrors.fosshost.org/blackarch/ova/blackarch-linux-2021.09.01.ova
-            VBoxManage import blackarch-linux-2021.09.01.ova
+            VBoxManage import blackarch-linux-2021.09.01.ova --vsys 0 --eula accept
 	    fi
         if [ "$cyberselection" == "4" ]; then
             #user needs to run 'sudo dnf upgrade --refresh && reboot'
@@ -110,7 +110,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    fi
         if [ "$cyberselection" == "8" ]; then
             wget http://downloads.csilinux.com/CSI%20Linux%202021.2.ova
-            VBoxManage import CSI-Linux-2021.2.ova
+            VBoxManage import CSI-Linux-2021.2.ova --vsys 0 --eula accept
 	    fi
         if [ "$cyberselection" == "9" ]; then
             #user needs to run 'sudo apt update && apt upgrade' after download
@@ -125,12 +125,12 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
         if [ "$cyberselection" == "10" ]; then
 		    #user needs to run 'sudo apt update && apt upgrade' after download. It will take a while since it's based on Xubuntu 12.
 		    wget https://downloads.sourceforge.net/project/honeydrive/HoneyDrive%203%20Royal%20Jelly%20edition/HoneyDrive_3_Royal_Jelly.ova?ts=gAAAAABiaBz_eLxLj3zXZSe_hb9HySo5Uwu5WXGb2eki2bnhFoOGbjYY_JD1oc5UTriKNw2BX8IGuPnKBVxQPC8LrMMYLTqcQg%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fhoneydrive%2Ffiles%2Flatest%2Fdownload
-		    VBoxManage import HoneyDrive_3_Royal_Jelly.ova
+		    VBoxManage import HoneyDrive_3_Royal_Jelly.ova --vsys 0 --eula accept
 	    fi
         if [ "$cyberselection" == "11" ]; then
 		    #user needs to run 'sudo apt update && apt upgrade' after download.
 		    wget https://downloads.sourceforge.net/project/websecuritydojo/Version_3.4.1/Dojo-3.4.1.ova?ts=gAAAAABiaB0j24e0pxLqcRhnkLLDMkuYzcD_W5jqAu_vic8i4B8Y6Hz1A5rLirpSyhopFuf55UFr1AAurWSVvl2wWB2GNJdFPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fwebsecuritydojo%2Ffiles%2Flatest%2Fdownload
-		    VBoxManage import Dojo-3.4.1.ova
+		    VBoxManage import Dojo-3.4.1.ova --vsys 0 --eula accept
 	    fi
         if [ "$cyberselection" == "12" ]; then
             #user needs to run 'emerge --ask --oneshot sys-apps/portage' after download.
@@ -144,7 +144,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    fi
         if [ "$cyberselection" == "13" ]; then
 		    wget https://downloads.sourceforge.net/project/remnux/ova-virtualbox/remnux-v7-focal-virtualbox.ova?ts=gAAAAABiaIIa5bKzzKa6qSt5WzjNFWjsz0ZpukfPxVLExVDmJVfr-R6y-WBLVt4HB_pwvBdFK68BuphnDED3A11z7ca-cb_tPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fremnux%2Ffiles%2Fova-virtualbox%2Fremnux-v7-focal-virtualbox.ova%2Fdownload
-		    VBoxManage import remnux-v7-focal-virtualbox.ova
+		    VBoxManage import remnux-v7-focal-virtualbox.ova --vsys 0 --eula accept
         fi
         if [ "$cyberselection" == "14" ]; then
             wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-malwareanalysis.vbox
