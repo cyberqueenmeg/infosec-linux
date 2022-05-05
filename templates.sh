@@ -71,7 +71,6 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl SATA --port 0 --device 0 --type hdd --medium $filename
 	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
