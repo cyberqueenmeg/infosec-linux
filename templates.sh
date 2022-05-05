@@ -93,10 +93,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = Fedora-Security-Live-x86_64-35-1.2.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -115,10 +115,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = securityonion-2.3.120-20220425.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Linux
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -137,10 +137,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = pfSense-CE-2.6.0-RELEASE-amd64.iso.gz
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Unknown
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -159,10 +159,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = caine12.4.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -186,7 +186,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = TL-OSINT-2022.1-amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
@@ -220,10 +220,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = pentoo-full-x86-hardened-2022.0_p20220312.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Gentoo
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -287,7 +287,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = debian-11.3.0-amd64-netinst.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
@@ -308,10 +308,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = ubuntu-22.04-desktop-amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -329,10 +329,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = ubuntu-20.04.4-live-server-amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -350,10 +350,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = Fedora-Workstation-Live-x86_64-35-1.2.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -371,10 +371,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = Fedora-Server-dvd-x86_64-35-1.2.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -392,10 +392,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = openSUSE-Leap-15.3-DVD-x86_64-Current.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype SUSE
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -413,10 +413,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = CentOS-7-x86_64-Everything-2009.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype CentOS
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -434,10 +434,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = OracleLinux-R8-U5-x86_64-dvd.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Oracle
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -455,10 +455,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = OracleLinux-R7-U9-Server-x86_64-dvd.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Oracle
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -476,10 +476,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = livegui-amd64-20220424T170534Z.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Gentoo
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -497,10 +497,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = manjaro-xfce-21.2.6-220416-linux515.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -522,10 +522,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = EndeavourOS_Apollo_22_1.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -543,10 +543,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = arcolinuxb-cinnamon-v22.03.07-x86_64.iso/download
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -564,7 +564,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = Parrot-home-5.0_amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
@@ -585,10 +585,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = Solus-4.3-Budgie.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Linux
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -606,10 +606,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = Zorin-OS-16-Core-64-bit-r4.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -627,10 +627,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = pop-os_22.04_amd64_intel_4.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -648,7 +648,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
@@ -669,10 +669,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = FreeBSD-13.0-RELEASE-amd64-bootonly.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype BSD
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
@@ -690,10 +690,10 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
+	    filename = airyxOS_0.4.0pre2_f13_5030978304344064_amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
-	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --ostype BSD
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
