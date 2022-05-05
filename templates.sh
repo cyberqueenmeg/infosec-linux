@@ -54,14 +54,28 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
 	    fi
         if [ "$cyberselection" == "2" ]; then
-            #user needs to run 'sudo apt How to Import a Python Function fro...update && apt upgrade' after download
+            #user needs to run 'sudo apt update && apt upgrade' after download
             wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name $(vmname)
-            VBoxManage storagectl $(vmname) --bootable yes
-            VBoxManage storageattach "$(vmname)" --name Parrot-security-5.0_amd64.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl SATA --port 0 --device 0 --type hdd --medium $filename
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
+	    
 	    fi
         if [ "$cyberselection" == "3" ]; then
             #user needs to run 'sudo pacman -Syu' after download
