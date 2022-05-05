@@ -58,8 +58,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
+            VBoxManage createvm --name $(vmname)
+            VBoxManage storagectl $(vmname) --name $(vmname) --bootable yes
             VBoxManage storageattach "$(vmname)" --name Parrot-security-5.0_amd64.iso
             VBoxManage startvm "$(vmname)"
 	    fi
