@@ -87,40 +87,88 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             wget https://download.fedoraproject.org/pub/alt/releases/35/Labs/x86_64/iso/Fedora-Security-Live-x86_64-35-1.2.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name Fedora-Security-Live-x86_64-35-1.2.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	    fi
         if [ "$cyberselection" == "5" ]; then
             #user needs to run 'sudo soup'
             wget https://download.securityonion.net/file/securityonion/securityonion-2.3.120-20220425.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name securityonion-2.3.120-20220425.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	    fi
         if [ "$cyberselection" == "6" ]; then
             #user needs to update from manager GUI
             wget https://atxfiles.netgate.com/mirror/downloads/pfSense-CE-2.6.0-RELEASE-amd64.iso.gz
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name pfSense-CE-2.6.0-RELEASE-amd64.iso.gz
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	    fi
         if [ "$cyberselection" == "7" ]; then
             #user needs to run 'sudo apt update && apt upgrade' after download
             wget https://deb.parrot.sh/direct/parrot/iso/caine/caine12.4.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name caine12.4.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	    fi
         if [ "$cyberselection" == "8" ]; then
             wget http://downloads.csilinux.com/CSI%20Linux%202021.2.ova
@@ -132,10 +180,22 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             wget https://download.tracelabs.org/TL-OSINT-2022.1-amd64.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)" --name TL-OSINT-2022.1-amd64.iso
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	    fi
         if [ "$cyberselection" == "10" ]; then
 		    #user needs to run 'sudo apt update && apt upgrade' after download. It will take a while since it's based on Xubuntu 12.
@@ -154,15 +214,27 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             wget https://pentoo.osuosl.org/daily-autobuilds/Pentoo_Full_x86_hardened/pentoo-full-x86-hardened-2022.0_p20220312.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name pentoo-full-x86-hardened-2022.0_p20220312.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	    fi
         if [ "$cyberselection" == "13" ]; then
-		    wget https://downloads.sourceforge.net/project/remnux/ova-virtualbox/remnux-v7-focal-virtualbox.ova?ts=gAAAAABiaIIa5bKzzKa6qSt5WzjNFWjsz0ZpukfPxVLExVDmJVfr-R6y-WBLVt4HB_pwvBdFK68BuphnDED3A11z7ca-cb_tPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fremnux%2Ffiles%2Fova-virtualbox%2Fremnux-v7-focal-virtualbox.ova%2Fdownload
-		    VBoxManage import remnux-v7-focal-virtualbox.ova --vsys 0 --eula accept
-		    echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
+	    wget https://downloads.sourceforge.net/project/remnux/ova-virtualbox/remnux-v7-focal-virtualbox.ova?ts=gAAAAABiaIIa5bKzzKa6qSt5WzjNFWjsz0ZpukfPxVLExVDmJVfr-R6y-WBLVt4HB_pwvBdFK68BuphnDED3A11z7ca-cb_tPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fremnux%2Ffiles%2Fova-virtualbox%2Fremnux-v7-focal-virtualbox.ova%2Fdownload
+	    VBoxManage import remnux-v7-focal-virtualbox.ova --vsys 0 --eula accept
+	    echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
         if [ "$cyberselection" == "14" ]; then
             wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-malwareanalysis.vbox
@@ -209,191 +281,425 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name debian-11.3.0-amd64-netinst.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "2" ]; then
             wget https://releases.ubuntu.com/22.04/ubuntu-22.04-desktop-amd64.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name ubuntu-22.04-desktop-amd64.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "3" ]; then
             wget https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name ubuntu-20.04.4-live-server-amd64.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "4" ]; then
             wget https://download.fedoraproject.org/pub/fedora/linux/releases/35/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-35-1.2.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name Fedora-Workstation-Live-x86_64-35-1.2.iso 
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "5" ]; then
             wget https://download.fedoraproject.org/pub/fedora/linux/releases/35/Server/x86_64/iso/Fedora-Server-dvd-x86_64-35-1.2.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name Fedora-Server-dvd-x86_64-35-1.2.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "6" ]; then
             wget https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name openSUSE-Leap-15.3-DVD-x86_64-Current.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "7" ]; then
             wget http://mirror.arizona.edu/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Everything-2009.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name CentOS-7-x86_64-Everything-2009.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "8" ]; then
             wget https://yum.oracle.com/ISOS/OracleLinux/OL8/u5/x86_64/OracleLinux-R8-U5-x86_64-dvd.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name OracleLinux-R8-U5-x86_64-dvd.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "9" ]; then
             wget https://yum.oracle.com/ISOS/OracleLinux/OL7/u9/x86_64/OracleLinux-R7-U9-Server-x86_64-dvd.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name OracleLinux-R7-U9-Server-x86_64-dvd.iso
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "10" ]; then
             https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220424T170534Z/livegui-amd64-20220424T170534Z.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)" --name
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "11" ]; then
             wget https://download.manjaro.org/xfce/21.2.6/manjaro-xfce-21.2.6-220416-linux515.iso
             echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "12" ]; then
             wget https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/54317/artifacts/file/output/Arch-Linux-x86_64-virtualbox-20220426.54317.box
             VBoxManage import --name vmname -n
-            echo "What do you want to name your VM?"
-            read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
 	fi
         if [ "$genericselection" == "13" ]; then
             wget https://github.com/endeavouros-team/ISO/releases/download/1-EndeavourOS-ISO-releases-archive/EndeavourOS_Apollo_22_1.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "14" ]; then
             wget https://sourceforge.net/projects/arcolinux-community-editions/files/cinnamon/arcolinuxb-cinnamon-v22.03.07-x86_64.iso/download
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "15" ]; then
             wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-home-5.0_amd64.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "16" ]; then
             wget https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "17" ]; then
             wget http://deb.parrot.sh/parrot/iso/zorin/Zorin-OS-16-Core-64-bit-r4.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "18" ]; then
             wget https://pop-iso.sfo2.cdn.digitaloceanspaces.com/22.04/amd64/intel/4/pop-os_22.04_amd64_intel_4.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "19" ]; then
             wget https://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "20" ]; then
             wget https://download.freebsd.org/releases/amd64/amd64/ISO-IMAGES/13.0/FreeBSD-13.0-RELEASE-amd64-bootonly.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
         if [ "$genericselection" == "21" ]; then
             wget https://mirrors.nomadlogic.org/nightly/airyxOS_0.4.0pre2_f13_5030978304344064_amd64.iso
-            echo "What do you want to name your VM?"
+	    echo "What do you want to name your VM?"
             read vmname
-            VBoxManage createvm --name "$(vmname)"
-            VBoxManage storagectl "$(vmname)" --bootable yes
-            VBoxManage storageattach "$(vmname)"
-            VBoxManage startvm "$(vmname)"
+	    echo "How much RAM (in mb) do you want to allocate?"
+	    read ram
+	    echo "How much storage space (in mb) do you want to allocate?"
+	    read hdd
+	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
+	    read network
+	    filename = Parrot-security-5.0_amd64.iso
+            VBoxManage createvm --name $vmname --register
+	    VBoxManage createhd --filename $vmname --size $hdd
+	    VBoxManage modifyvm $vmname --ostype Debian
+	    VBoxManage modifyvm $vmname --memory $ram
+	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
+	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    VBoxManage startvm $vmname
 	fi
     fi
 fi
