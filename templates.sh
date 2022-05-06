@@ -58,8 +58,6 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    echo "Where do you want to download the ISO file?"
 	    read filepath
             wget -P $filepath http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
-	    declare name
-	    name = "Parrot-security-5.0_amd64.iso"
             echo "What do you want to name your VM?"
             read vmname
 	    echo "How much RAM (in mb) do you want to allocate?"
@@ -72,11 +70,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name "IDE" --add ide --bootable on
-	    VBoxManage storageattach $vmname --storagectl "IDE" --port 0 --device 0 --type dvddrive --medium "$filepath/$name"
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
-	    
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "3" ]; then
             #user needs to run 'sudo pacman -Syu' after download
@@ -95,16 +90,13 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Fedora-Security-Live-x86_64-35-1.2.iso
+	    # Fedora-Security-Live-x86_64-35-1.2.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "5" ]; then
             #user needs to run 'sudo soup'
@@ -117,16 +109,13 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = securityonion-2.3.120-20220425.iso
+	    # securityonion-2.3.120-20220425.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Linux
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "6" ]; then
             #user needs to update from manager GUI
@@ -139,16 +128,13 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = pfSense-CE-2.6.0-RELEASE-amd64.iso.gz
+	    # pfSense-CE-2.6.0-RELEASE-amd64.iso.gz
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Unknown
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
-	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "7" ]; then
             #user needs to run 'sudo apt update && apt upgrade' after download
@@ -161,16 +147,13 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = caine12.4.iso
+	    # caine12.4.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "8" ]; then
             wget http://downloads.csilinux.com/CSI%20Linux%202021.2.ova
@@ -188,16 +171,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = TL-OSINT-2022.1-amd64.iso
+	    # TL-OSINT-2022.1-amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "10" ]; then
 		    #user needs to run 'sudo apt update && apt upgrade' after download. It will take a while since it's based on Xubuntu 12.
@@ -222,16 +205,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = pentoo-full-x86-hardened-2022.0_p20220312.iso
+	    # pentoo-full-x86-hardened-2022.0_p20220312.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Gentoo
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
         if [ "$cyberselection" == "13" ]; then
 	    wget https://downloads.sourceforge.net/project/remnux/ova-virtualbox/remnux-v7-focal-virtualbox.ova?ts=gAAAAABiaIIa5bKzzKa6qSt5WzjNFWjsz0ZpukfPxVLExVDmJVfr-R6y-WBLVt4HB_pwvBdFK68BuphnDED3A11z7ca-cb_tPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fremnux%2Ffiles%2Fova-virtualbox%2Fremnux-v7-focal-virtualbox.ova%2Fdownload
@@ -289,16 +272,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = debian-11.3.0-amd64-netinst.iso
+	    # debian-11.3.0-amd64-netinst.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "2" ]; then
             wget https://releases.ubuntu.com/22.04/ubuntu-22.04-desktop-amd64.iso
@@ -310,16 +293,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = ubuntu-22.04-desktop-amd64.iso
+	    # ubuntu-22.04-desktop-amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "3" ]; then
             wget https://releases.ubuntu.com/20.04.4/ubuntu-20.04.4-live-server-amd64.iso
@@ -331,16 +314,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = ubuntu-20.04.4-live-server-amd64.iso
+	    # ubuntu-20.04.4-live-server-amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "4" ]; then
             wget https://download.fedoraproject.org/pub/fedora/linux/releases/35/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-35-1.2.iso
@@ -352,16 +335,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Fedora-Workstation-Live-x86_64-35-1.2.iso
+	    # Fedora-Workstation-Live-x86_64-35-1.2.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "5" ]; then
             wget https://download.fedoraproject.org/pub/fedora/linux/releases/35/Server/x86_64/iso/Fedora-Server-dvd-x86_64-35-1.2.iso
@@ -373,16 +356,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Fedora-Server-dvd-x86_64-35-1.2.iso
+	    # Fedora-Server-dvd-x86_64-35-1.2.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "6" ]; then
             wget https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-x86_64-Current.iso
@@ -394,16 +377,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = openSUSE-Leap-15.3-DVD-x86_64-Current.iso
+	    # openSUSE-Leap-15.3-DVD-x86_64-Current.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype SUSE
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "7" ]; then
             wget http://mirror.arizona.edu/centos/7.9.2009/isos/x86_64/CentOS-7-x86_64-Everything-2009.iso
@@ -415,16 +398,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = CentOS-7-x86_64-Everything-2009.iso
+	    # CentOS-7-x86_64-Everything-2009.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype CentOS
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "8" ]; then
             wget https://yum.oracle.com/ISOS/OracleLinux/OL8/u5/x86_64/OracleLinux-R8-U5-x86_64-dvd.iso
@@ -436,16 +419,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = OracleLinux-R8-U5-x86_64-dvd.iso
+	    # OracleLinux-R8-U5-x86_64-dvd.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Oracle
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "9" ]; then
             wget https://yum.oracle.com/ISOS/OracleLinux/OL7/u9/x86_64/OracleLinux-R7-U9-Server-x86_64-dvd.iso
@@ -457,16 +440,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = OracleLinux-R7-U9-Server-x86_64-dvd.iso
+	    # OracleLinux-R7-U9-Server-x86_64-dvd.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Oracle
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "10" ]; then
             https://bouncer.gentoo.org/fetch/root/all/releases/amd64/autobuilds/20220424T170534Z/livegui-amd64-20220424T170534Z.iso
@@ -478,16 +461,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = livegui-amd64-20220424T170534Z.iso
+	    # livegui-amd64-20220424T170534Z.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Gentoo
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "11" ]; then
             wget https://download.manjaro.org/xfce/21.2.6/manjaro-xfce-21.2.6-220416-linux515.iso
@@ -499,16 +482,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = manjaro-xfce-21.2.6-220416-linux515.iso
+	    # manjaro-xfce-21.2.6-220416-linux515.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "12" ]; then
             wget https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/54317/artifacts/file/output/Arch-Linux-x86_64-virtualbox-20220426.54317.box
@@ -524,16 +507,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = EndeavourOS_Apollo_22_1.iso
+	    # EndeavourOS_Apollo_22_1.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "14" ]; then
             wget https://sourceforge.net/projects/arcolinux-community-editions/files/cinnamon/arcolinuxb-cinnamon-v22.03.07-x86_64.iso/download
@@ -545,16 +528,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = arcolinuxb-cinnamon-v22.03.07-x86_64.iso/download
+	    # arcolinuxb-cinnamon-v22.03.07-x86_64.iso/download
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "15" ]; then
             wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-home-5.0_amd64.iso
@@ -566,16 +549,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-home-5.0_amd64.iso
+	    # Parrot-home-5.0_amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "16" ]; then
             wget https://mirrors.rit.edu/solus/images/4.3/Solus-4.3-Budgie.iso
@@ -587,16 +570,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Solus-4.3-Budgie.iso
+	    # Solus-4.3-Budgie.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Linux
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "17" ]; then
             wget http://deb.parrot.sh/parrot/iso/zorin/Zorin-OS-16-Core-64-bit-r4.iso
@@ -608,16 +591,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Zorin-OS-16-Core-64-bit-r4.iso
+	    # Zorin-OS-16-Core-64-bit-r4.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "18" ]; then
             wget https://pop-iso.sfo2.cdn.digitaloceanspaces.com/22.04/amd64/intel/4/pop-os_22.04_amd64_intel_4.iso
@@ -629,16 +612,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = pop-os_22.04_amd64_intel_4.iso
+	    # pop-os_22.04_amd64_intel_4.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "19" ]; then
             wget https://downloads.raspberrypi.org/rpd_x86/images/rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
@@ -650,16 +633,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
+	    # rpd_x86-2021-01-12/2021-01-11-raspios-buster-i386.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "20" ]; then
             wget https://download.freebsd.org/releases/amd64/amd64/ISO-IMAGES/13.0/FreeBSD-13.0-RELEASE-amd64-bootonly.iso
@@ -671,16 +654,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = FreeBSD-13.0-RELEASE-amd64-bootonly.iso
+	    # FreeBSD-13.0-RELEASE-amd64-bootonly.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype BSD
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
         if [ "$genericselection" == "21" ]; then
             wget https://mirrors.nomadlogic.org/nightly/airyxOS_0.4.0pre2_f13_5030978304344064_amd64.iso
@@ -692,16 +675,16 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = airyxOS_0.4.0pre2_f13_5030978304344064_amd64.iso
+	    # airyxOS_0.4.0pre2_f13_5030978304344064_amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype BSD
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
 	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    VBoxManage startvm $vmname
+	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
     fi
 fi
