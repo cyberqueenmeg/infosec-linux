@@ -178,7 +178,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
@@ -212,7 +212,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	    fi
@@ -279,7 +279,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -300,7 +300,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -321,7 +321,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -342,7 +342,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -363,7 +363,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -384,7 +384,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -405,7 +405,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -426,7 +426,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -447,7 +447,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -468,7 +468,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -489,7 +489,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -514,7 +514,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -535,7 +535,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -556,7 +556,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -577,7 +577,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -598,7 +598,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -619,7 +619,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -640,7 +640,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -661,7 +661,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
@@ -682,7 +682,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --memory $ram
 	    # $vmname --name IDE --add ide --controller PIIX4 --bootable on
 	    
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
+	    # $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    echo "Please open VirtualBox, highlight your virtual machine, click Settings, click Storage, click the DVD drive, and navigate to the folder with the ISO and add it to the storage controller. Then, start the machine."
 	fi
