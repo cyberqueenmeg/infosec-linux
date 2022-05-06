@@ -70,8 +70,7 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    
@@ -99,8 +98,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    fi
@@ -121,8 +120,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Linux
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    fi
@@ -143,8 +142,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Unknown
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    fi
@@ -165,8 +164,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    fi
@@ -192,8 +191,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    fi
@@ -226,8 +225,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Gentoo
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	    fi
@@ -293,8 +292,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -314,8 +313,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -335,8 +334,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -356,8 +355,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -377,8 +376,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Fedora
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -398,8 +397,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype SUSE
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -419,8 +418,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype CentOS
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -440,8 +439,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Oracle
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -461,8 +460,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Oracle
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -482,8 +481,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Gentoo
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -503,8 +502,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -528,8 +527,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -549,8 +548,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Arch
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -570,8 +569,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -591,8 +590,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Linux
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -612,8 +611,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -633,8 +632,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Ubuntu
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -654,8 +653,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -675,8 +674,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype BSD
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
@@ -696,8 +695,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype BSD
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storagectl $vmname --name SATA --add sata --controller IntelAhci --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 0 --device 0 --type dvddrive --medium $filename
+	    
+	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
 	    VBoxManage startvm $vmname
 	fi
