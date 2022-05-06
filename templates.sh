@@ -71,8 +71,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
 	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
-	    VBoxManage storageattach $vmname --storagectl IDE --port 1 --device 0 --type dvddrive --medium $filename
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
+	    echo "You will need to attach the ISO file to the Virtual Machine"
 	    VBoxManage startvm $vmname
 	    
 	    fi
