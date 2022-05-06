@@ -58,6 +58,8 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    echo "Where do you want to download the ISO file?"
 	    read filepath
             wget -P $filepath http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
+	    declare name
+	    name = "Parrot-security-5.0_amd64.iso"
             echo "What do you want to name your VM?"
             read vmname
 	    echo "How much RAM (in mb) do you want to allocate?"
@@ -70,9 +72,9 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
 	    VBoxManage modifyvm $vmname --memory $ram
-	    VBoxManage storagectl $vmname --name IDE --add ide --controller PIIX4 --bootable on
+	    VBoxManage storagectl $vmname --name "IDE" --add ide --bootable on
+	    VBoxManage storageattach $vmname --storagectl "IDE" --port 0 --device 0 --type dvddrive --medium "$filepath/$name"
 	    VBoxManage modifyvm $vmname --nic1 $network --nictype1 82540EM --cableconnected1 on
-	    echo "You will need to attach the ISO file to the Virtual Machine"
 	    VBoxManage startvm $vmname
 	    
 	    fi
