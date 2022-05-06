@@ -55,7 +55,9 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    fi
         if [ "$cyberselection" == "2" ]; then
             #user needs to run 'sudo apt update && apt upgrade' after download
-            wget http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
+	    echo "Where do you want to download the ISO file?"
+	    read filepath
+            wget -P $filepath http://deb.parrot.sh/parrot/iso/5.0/Parrot-security-5.0_amd64.iso
             echo "What do you want to name your VM?"
             read vmname
 	    echo "How much RAM (in mb) do you want to allocate?"
@@ -64,7 +66,6 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
 	    read hdd
 	    echo "Network Settings: options are none / null / nat / bridged / intnet / hostonly / vde"
 	    read network
-	    filename = Parrot-security-5.0_amd64.iso
             VBoxManage createvm --name $vmname --register
 	    VBoxManage createhd --filename $vmname --size $hdd
 	    VBoxManage modifyvm $vmname --ostype Debian
