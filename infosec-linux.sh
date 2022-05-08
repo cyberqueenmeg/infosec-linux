@@ -43,9 +43,6 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
         echo "11 - Security Dojo Hacking Distribution"
         echo "12 - Pentoo"
         echo "13 - Remnux Malware Analysis"
-        echo "14 - InfoSec Linux Malware Analysis"
-        echo "15 - InfoSec Linux Mobile Hacking"
-        echo "16 - InfoSec Linux Web App Hacking"
         read cyberselection
         if [ "$cyberselection" == "1" ]; then
             #user needs to run 'sudo apt update && apt upgrade' after download
@@ -214,18 +211,6 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
         if [ "$cyberselection" == "13" ]; then
             wget https://downloads.sourceforge.net/project/remnux/ova-virtualbox/remnux-v7-focal-virtualbox.ova?ts=gAAAAABiaIIa5bKzzKa6qSt5WzjNFWjsz0ZpukfPxVLExVDmJVfr-R6y-WBLVt4HB_pwvBdFK68BuphnDED3A11z7ca-cb_tPA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fremnux%2Ffiles%2Fova-virtualbox%2Fremnux-v7-focal-virtualbox.ova%2Fdownload
             VBoxManage import remnux-v7-focal-virtualbox.ova --vsys 0 --eula accept
-            echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
-        fi
-        if [ "$cyberselection" == "14" ]; then
-            VBoxManage registervm $(pwd)/virtualmachines/infoseclinux-malwareanalysis.vbox
-            echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
-        fi
-        if [ "$cyberselection" == "15" ]; then
-            VBoxManage registervm $(pwd)/virtualmachines/infoseclinux-mobilehacking.vbox
-            echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
-        fi   
-        if [ "$cyberselection" == "16" ]; then
-            VBoxManage registervm $(pwd)/virtualmachines/infoseclinux-webapphacking.vbox 
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
     fi
