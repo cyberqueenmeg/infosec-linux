@@ -217,15 +217,15 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
         if [ "$cyberselection" == "14" ]; then
-            VBoxManage registervm virtualmachines/infoseclinux-malwareanalysis.vbox
+            VBoxManage registervm $(pwd)/virtualmachines/infoseclinux-malwareanalysis.vbox
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
         if [ "$cyberselection" == "15" ]; then
-            VBoxManage registervm virtualmachines/infoseclinux-mobilehacking.vbox
+            VBoxManage registervm $(pwd)/virtualmachines/infoseclinux-mobilehacking.vbox
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi   
         if [ "$cyberselection" == "16" ]; then
-            VBoxManage registervm virtualmachines/infoseclinux-webapphacking.vbox 
+            VBoxManage registervm $(pwd)/virtualmachines/infoseclinux-webapphacking.vbox 
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
     fi
