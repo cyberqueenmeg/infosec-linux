@@ -217,18 +217,15 @@ if [ "$selection" = "1" ] || [ "$selection" = "2" ]; then
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
         if [ "$cyberselection" == "14" ]; then
-            wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-malwareanalysis.vbox
-            VBoxManage registervm infoseclinux-malwareanalysis.vbox
+            VBoxManage registervm virtualmachines/infoseclinux-malwareanalysis.vbox
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
         if [ "$cyberselection" == "15" ]; then
-            wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-mobilehacking.vbox
-            VBoxManage registervm infoseclinux-mobilehacking.vbox
+            VBoxManage registervm virtualmachines/infoseclinux-mobilehacking.vbox
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi   
         if [ "$cyberselection" == "16" ]; then
-            wget https://github.com/cyberqueen-meg/infosec-linux/blob/main/virtual-machines/infoseclinux-malwareanalysis.vbox
-            VBoxManage registervm infoseclinux-webapphacking.vbox 
+            VBoxManage registervm virtualmachines/infoseclinux-webapphacking.vbox 
             echo "Virtual Machine Installed Successfully. Go to VirtualBox and start the machine to use it!"
         fi
     fi
